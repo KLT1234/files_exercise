@@ -1,5 +1,7 @@
+filename = "/home/klt/home/GitHub/test/files_exercise/items.txt"
+
 def menu():
-    filename = "index.txt"
+
     """
     1. Read
     2. Add
@@ -8,18 +10,19 @@ def menu():
     """
 
     
-    return input("Enter choise: ")
+    return int(input("Enter choise: "))
 
-    if input == 1:
-        pass
-    elif input == 2:
-        pass
-    elif input == 3:
-        pass
-    elif input == 4:
-        pass
-    else:
-        exit()
+def choice(input):
+        if input == 1:
+            print(read_file(filename, "r"))
+        elif input == 2:
+            write_to_file("\n" + input("Enter item to add: "), "a")        
+        elif input == 3:
+            replace_file()
+        elif input == 4:
+            delete_items()
+        else:
+            exit()
 
 
 def read_file(filename, mode):
@@ -27,18 +30,32 @@ def read_file(filename, mode):
         fh = fd.read()
         return fh
 
-def write_to_file(filename, content, mode):
+def write_to_file(content, mode):
     with open(filename, mode) as fd:
-        fd.write(content)
+        return fd.write(content)
 
 def replace_file():
     item = ""
     result = ""
     while item != "q":
-        if result.index[item] == 0:
-            result += item
+        result += item + "\n"    
+        item = input("Add item")
+    write_to_file(result, "w")
+
+def delete_items():
+    #if inp_item is in list, remove it
+    content = readline()
+    remove = input("Enter item to be removed: ")
+
+    if remove in content:
+        if content.index(remove) == 0:
+            modified_content = content.replace(remove, "")
         else:
-            result += item + "\n"
+            modified_content = content.replace("\n" + remove, "")
+        write_to_file(modified_content, "w") 
+
+
 
 if __name__ == "__main__":
-    menu()
+    choice(menu())
+    write_to_file(content, mode)
