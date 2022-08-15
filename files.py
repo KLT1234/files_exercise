@@ -20,5 +20,11 @@ def menu():
     else:
         exit()
 
+
+def read_file(filename, mode):
+    with open (filename, mode) as fd:
+        fh = fd.read()
+        return fh
+
 if __name__ == "__main__":
     menu()
